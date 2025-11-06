@@ -1,109 +1,106 @@
-# Weekly Project Report – Week 02
-**Date:** 2025-11-06  
-**Status:** 🟢 Green  
-**Branch:** update-20251106  
+# 📅 Week 02 – Project Progress Report  
+**Project:** Restaurant Performance Dashboard  
+**Team Members:** Geison Herrera & Daniel Vega  
+**Date:** 04–10 November 2025  
+**Status:** 🟢 On Track  
+
+
+## Weekly Summary  
+During this second week, we focused on the **core backend foundation** of our project.  
+Our goal was to design the main **entities**, set up the **database context (DbContext)** and successfully configure **Entity Framework Core** to handle our data model.  
+
+Even though we encountered several issues with namespaces, migrations, and dependencies, we managed to fix all of them and establish a fully functional backend structure that connects correctly with SQL Server.
+
+
+
+## Technical Work Completed  
+
+### 1. Entity Design  
+We created the main domain entities that represent the restaurant’s operational data:
+
+- **Sale:** records total sales, taxes, and net income per day.  
+- **Tip:** stores daily tip amounts distributed among staff.  
+- **Expense:** tracks spending with category, amount, notes, and recurring flag.  
+- **Staff:** represents employees involved in operations and tip distribution.  
+- **TipRule:** defines FOH and BOH percentage rules for tips.  
+- **Import:** created for uploading or importing sales/tips reports.  
+- **Stock:** will be developed later for inventory control.  
+
+Each class now has a unique ID, relevant fields, and a clear structure ready for CRUD operations.
 
 ---
 
-## Project Title and Description
-Restaurant Performance Dashboard — a web app to centralize restaurant data (sales, tips, expenses, and basic table metrics) and generate weekly/monthly PDF reports. The goal is to reduce manual work, improve transparency, and provide one source of truth for owners and managers.
+### 🗃️ 2. Database Context Setup  
+We developed the **DashboardDbContext** class inside the *Infrastructure* layer.  
+This context manages the link between the application and the database.  
+It includes `DbSet<>` definitions for all entities and the `OnModelCreating` method to specify decimal precision and avoid SQL truncation issues.  
 
----
+Example:
+c#
+modelBuilder.Entity<Expense>(e =>
+{
+    e.Property(p => p.Amount).HasColumnType("decimal(18,2)");
+});
 
-## Problem Statement (Draft)
-Small/medium restaurants often keep data across Excel, POS exports (Toast/SumUp), Stripe payouts, and manual notes. This fragmentation causes duplicate work, inconsistent numbers, and slow decision making (e.g., “How did we do vs last week?” “Are tips split fairly?”). We need a single place to ingest data, compute KPIs consistently, and produce reliable PDFs that match the dashboard.
+This ensures consistent handling of all monetary data such as sales, tips, and expenses.
 
----
+3. Migrations and Database Configuration
+We successfully generated and applied two migrations:
 
-## Stakeholders (Draft)
-| Stakeholder | Needs |
-|---|---|
-| Owner | Profit view, trends, fair tip distribution, clean weekly/monthly PDF |
-| Manager | Fast ingestion, clear KPIs, filters by date/range, exports |
-| Staff | Transparent tip breakdown by week/period |
-| Accountant | Consistent numbers matching exports, audit trail |
-| Admin (IT) | Roles/permissions, imports audit, health checks, CI visibility |
+InitialCreate → Created the base database structure.
 
----
+SetDecimalPrecision → Adjusted the precision for financial fields.
 
-## Objectives (Draft)
-- Centralize sales, tips, and expenses with consistent KPIs and filters.  
-- Automate weekly/monthly PDF reports that match the dashboard exactly.  
-- Provide transparent tip allocation (FOH/BOH rules, audit of adjustments).  
-- Keep imports robust (CSV + mapping wizard + error file) to ensure adoption.  
-- Maintain reliability: CI pipeline, health endpoint, seed data for demos.
+Commands used:
 
----
+bash
+Copy code
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+dotnet ef migrations add SetDecimalPrecision
+dotnet ef database update
+After installing the missing Microsoft.EntityFrameworkCore.SqlServer package in the Infrastructure layer and rebuilding the solution, the database was fully updated and functional.
 
-## Initial Architecture (Outline)
-- **Frontend:** Blazor (or React TBD), responsive, global date filter, KPI cards + charts.
-- **API (.NET 8):** REST endpoints (`/sales`, `/tips`, `/expenses`, `/imports`, `/reports`, `/health`).
-- **Domain Layer:** business rules (tip split, validations, period comparisons).
-- **Data Layer (EF Core):** SQL Server or PostgreSQL; indexed by date/category/staff.
-- **Reporting:** QuestPDF/iText7; use the SAME queries as the dashboard for parity.
-- **DevOps:** GitHub Actions (build/tests later), protected `main`, PR-based workflow.
+4. Tools and Architecture
+Framework: .NET 9
 
-ASCII sketch:
+ORM: Entity Framework Core
 
-[ Blazor UI ] → [ .NET API ] → [ Domain ] → [ EF Core / SQL ]
-│
-└─> [ Reporting (PDF) ]
+Database: SQL Server
 
+Architecture: Clean separation between Domain, Infrastructure, API, and Reporting.
 
----
+Version Control: GitHub with protected main branch and individual update/report branches.
 
-## Base Entities (Draft)
-**Sale**
-- `Id (guid)`, `Date (date)`, `Section (string?)`, `Covers (int)`, `NetAmount (decimal)`, `Tax (decimal)`, `ServiceType (enum? dine-in/delivery)`
+The architecture is now stable and ready for CRUD implementations and controller setup in the following weeks.
 
-**Tip**
-- `Id`, `Date`, `StaffId (fk)`, `Amount (decimal)`, `Source (string: cash/card)`
+Challenges & Solutions
+Challenge	Solution
+EF couldn’t find entity references (DbSet<>)	Fixed namespaces and project references.
+Build failed during migration	Installed Microsoft.EntityFrameworkCore.SqlServer in Infrastructure.
+“Pending model changes” error	Created the SetDecimalPrecision migration.
+Missing decimal precision warnings	Added OnModelCreating configuration for all decimal fields.
 
-**Expense**
-- `Id`, `Date`, `CategoryId (fk)`, `Amount`, `Notes (string?)`, `Recurring (bool)`
+Each problem was addressed systematically, improving our understanding of how Entity Framework handles model synchronization and project layering.
 
-**Staff**
-- `Id`, `Name`, `Role (enum: Owner/Manager/FOH/BOH/Accountant)`, `Active (bool)`
+Next Steps (Week 03)
+Implement CRUD operations for Sales, Tips, and Expenses.
 
-**TipRule**
-- `Id`, `ValidFrom (date)`, `ValidTo (date?)`, `FOHPercent (decimal)`, `BOHPercent (decimal)`
+Create API controllers and connect them to the database.
 
-**Import**
-- `Id`, `Type (enum: Sales/Tips/Expenses)`, `When (datetime)`, `FileName`, `TotalRows`, `ValidRows`, `InvalidRows`, `ErrorFilePath (string?)`
+Seed sample data for testing.
 
-**(Optional) Stock**
-- `ItemId`, `Name`, `UoM`, `CurrentQty`, `LowStockThreshold`, `Movements[] (date, delta, reason)`
+Begin preparing the mock frontend connection.
 
----
+Reflection
+This week was both challenging and rewarding.
+We spent time debugging build and migration issues, but this process helped us understand how EF Core works under the hood.
+Now, the backend feels solid and structured — a real foundation for our project’s next features.
+Next week, we’re excited to finally start connecting the API with real data and building endpoints.
 
-## User Stories Completed This Week
-- Drafted **problem statement**, **stakeholders**, and **objectives**.  
-- Outlined **initial architecture** (layers, responsibilities, parity rules for PDFs).  
-- Defined **base entities** for the first migration (Sales, Tips, Expenses, Staff, TipRules, Imports; Stock optional).
+Summary:
 
----
+Week 02 focused on backend structure, EF Core configuration, and database setup.
+All objectives were met, and the project is ready to progress toward CRUD and data interaction.
 
-## User Stories Planned for Next Week
-- Create .NET solution and API project skeleton.  
-- Configure EF Core, first migration with **Sale/Tip/Expense/Staff/TipRule/Import**.  
-- Implement `/health` endpoint.  
-- Seed data for realistic Fri/Sat peaks.
-
----
-
-## What Went Well
-- Clear separation of concerns and simple domain model.  
-- Architecture keeps PDF and dashboard in sync (same queries).  
-- Weekly workflow on GitHub (update branches + PR to main) is working.
-
----
-
-## What Didn’t Go Well / Issues Encountered
-- Choosing SQL Server vs PostgreSQL: will decide based on hosting/college constraints.  
-- Need to validate CSV edge cases early (dates, decimals, empty staff).
-
----
-
-## GitHub Submission
-- Weekly branch: `update-20251106`  
-- Commit message: “Week 02: problem/stakeholders/objectives, architecture outline, base entities”
+Overall Progress: 🟢 On Track and Performing Well
