@@ -1,5 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using RestaurantDashboard.Infrastructure.Data;
+using RestaurantDashboard.Api.Services;
+using RestaurantDashboard.Api.Services.Interfaces;
+using RestaurantDashboard.Api.Services;
+using RestaurantDashboard.Api.Services.Interfaces;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +13,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<ISalesService, SalesService>();
+builder.Services.AddScoped<IExpensesService, ExpensesService>();
+builder.Services.AddScoped<IStaffService, StaffService>();
+builder.Services.AddScoped<ITipsService, TipsService>();
+builder.Services.AddScoped<ITipRulesService, TipRulesService>();
+
+
 
 // Database connection (SQL Server example)
 builder.Services.AddDbContext<DashboardDbContext>(options =>
