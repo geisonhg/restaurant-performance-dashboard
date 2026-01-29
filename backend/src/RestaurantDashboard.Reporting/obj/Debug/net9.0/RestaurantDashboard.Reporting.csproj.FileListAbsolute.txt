@@ -1,0 +1,11 @@
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Reporting\bin\Debug\net9.0\RestaurantDashboard.Reporting.deps.json
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Reporting\bin\Debug\net9.0\RestaurantDashboard.Reporting.dll
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Reporting\bin\Debug\net9.0\RestaurantDashboard.Reporting.pdb
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Reporting\obj\Debug\net9.0\RestaurantDashboard.Reporting.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Reporting\obj\Debug\net9.0\RestaurantDashboard.Reporting.AssemblyInfoInputs.cache
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Reporting\obj\Debug\net9.0\RestaurantDashboard.Reporting.AssemblyInfo.cs
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Reporting\obj\Debug\net9.0\RestaurantDashboard.Reporting.csproj.CoreCompileInputs.cache
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Reporting\obj\Debug\net9.0\RestaurantDashboard.Reporting.dll
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Reporting\obj\Debug\net9.0\refint\RestaurantDashboard.Reporting.dll
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Reporting\obj\Debug\net9.0\RestaurantDashboard.Reporting.pdb
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Reporting\obj\Debug\net9.0\ref\RestaurantDashboard.Reporting.dll

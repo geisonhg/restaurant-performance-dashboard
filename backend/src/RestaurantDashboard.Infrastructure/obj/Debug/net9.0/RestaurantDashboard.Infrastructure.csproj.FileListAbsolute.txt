@@ -1,0 +1,15 @@
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\bin\Debug\net9.0\RestaurantDashboard.Infrastructure.deps.json
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\bin\Debug\net9.0\RestaurantDashboard.Infrastructure.dll
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\bin\Debug\net9.0\RestaurantDashboard.Infrastructure.pdb
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\bin\Debug\net9.0\RestaurantDashboard.Domain.dll
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\bin\Debug\net9.0\RestaurantDashboard.Domain.pdb
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\obj\Debug\net9.0\RestaurantDashboard.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\obj\Debug\net9.0\RestaurantDashboard.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\obj\Debug\net9.0\RestaurantDashboard.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\obj\Debug\net9.0\RestaurantDashboard.Infrastructure.AssemblyInfo.cs
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\obj\Debug\net9.0\RestaurantDashboard.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\obj\Debug\net9.0\Restaura.6C98866B.Up2Date
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\obj\Debug\net9.0\RestaurantDashboard.Infrastructure.dll
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\obj\Debug\net9.0\refint\RestaurantDashboard.Infrastructure.dll
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\obj\Debug\net9.0\RestaurantDashboard.Infrastructure.pdb
+C:\Users\geiso\source\repos\restaurant-performance-dashboard\backend\src\RestaurantDashboard.Infrastructure\obj\Debug\net9.0\ref\RestaurantDashboard.Infrastructure.dll
